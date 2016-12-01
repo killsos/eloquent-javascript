@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var scope = "global";
+    var obj = {
+      scope:"test success"
+    }
+    function checkScope(){
+      var scope = "local";
+      function f(){
+        console.log(scope);
+        return this.scope;
+      }
+      return f;
+    }
+
+
+    var test = checkScope();
+    console.log(test());
+    console.log(test.call(obj));
+
+    </script>
+  </body>
+</html>
